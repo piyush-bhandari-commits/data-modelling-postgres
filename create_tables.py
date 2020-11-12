@@ -3,8 +3,9 @@ from queries import create_table_queries, drop_table_queries
 
 
 def create_database():
+
     # Connect to default database
-    connection = pg.connect("host=localhost dbname=studentdb user=student password=student")
+    connection = pg.connect("host=127.0.0.1 dbname=postgres user=student password=student")
     connection.set_session(autocommit=True)
     cursor = connection.cursor()
 
@@ -35,10 +36,16 @@ def create_tables(cursor, connection):
 
 
 def main():
-    cursor, connection = create_database()
-    drop_tables(cursor, connection)
-    create_tables(cursor, connection)
-    connection.close()
+
+    conn = pg.connect("host=127.0.0.1 dbname=postgres user=postgres password=student")
+    conn.set_session(autocommit=True)
+    print("DB started!")
+
+
+    # connection, cursor = create_database()
+    # drop_tables(cursor, connection)
+    # create_tables(cursor, connection)
+    # connection.close()
 
 
 if __name__ == '__main__':
